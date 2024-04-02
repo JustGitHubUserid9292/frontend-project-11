@@ -23,6 +23,13 @@ const config = {
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
+    resolve: { 
+        fallback: { 
+          "timers": require.resolve("timers-browserify"), 
+          "stream": require.resolve("stream-browserify"), 
+          "buffer": require.resolve("buffer/") 
+        } 
+     },
     module: {
         rules: [
             {

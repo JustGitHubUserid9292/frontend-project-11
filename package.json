@@ -25,7 +25,14 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
-    "make": "^0.8.1"
+    "buffer": "^6.0.3",
+    "lodash": "^4.17.21",
+    "make": "^0.8.1",
+    "stream-browserify": "^3.0.0",
+    "timers-browserify": "^2.0.12",
+    "xml2js": "^0.6.2",
+    "yup": "^1.4.0"
   }
 }
