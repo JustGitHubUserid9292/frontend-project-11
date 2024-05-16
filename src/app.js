@@ -1,11 +1,11 @@
 import validate from "./validate";
-import fetchData from "./fetchData";
-import parse from "./parse";
 import _ from 'lodash';
+import updatePosts from "./updatePosts";
 
 const state = {
   list: [],
   url: '',
+  content: '',
 }
 
 export default function app() {
@@ -20,18 +20,14 @@ export default function app() {
         if (!_.isEmpty(content)) {
             errorsContainer.textContent = content.url.message
             input.classList.add('is-invalid')
+            if (!errorsContainer.classList.contains('text-danger')) {
+              errorsContainer.classList.add('text-danger')
+            }
         } else {
             state.list.push(formData.get('url'))
             errorsContainer.textContent = ''
             input.classList.remove('is-invalid')
-            fetchData(formData.get('url')).then(({ data }) => {
-              if (!parse(data.contents)) {
-                input.classList.add('is-invalid')
-                errorsContainer.textContent = 'Ресурс не содержит валидный RSS'
-              } else {
-                console.log(parse(data.contents))
-              }
-            })
+            updatePosts(formData.get('url'), state)
         }
     })
     form.reset()
